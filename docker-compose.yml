@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  warsaw:
+    build:
+      context: ./src
+      dockerfile: Dockerfile.bb
+    container_name: warsaw
+    volumes:
+      - ./strace.warsaw:/strace.warsaw
+    ports:
+      - "30800:31800"
+      - "30900:31900"
+    privileged: true
+    userns_mode: "host"
+    stop_signal: SIGKILL
